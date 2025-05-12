@@ -50,7 +50,7 @@ int main() {
                 cout << "Thank you for visiting! Goodbye!\n";
                 break;
             default:
-                cout << "Invalid choice. Please select a number between 1 and 5.\n";
+                cout << "Invalid choice. Please select a number between 1 and 5.\n"; 
         }
 
     } while (choice != 5);
