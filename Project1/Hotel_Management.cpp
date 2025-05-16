@@ -14,7 +14,6 @@ int main ()
 
    //Total price of items
    int Total_rooms=0, Total_pasta=0, Total_burger=0, Total_noodles, Total_shake=0, Total_chicken=0;
-
    cout<<"\t\t\t Quantity of items we have  " <<endl;
    cout<<"Rooms available : "<<endl;
    cin>>Qrooms;
@@ -30,6 +29,13 @@ int main ()
    cin>>Qchicken;
 
    m:
+   cout<<"\n\t\t\t Prices of items :";
+   cout<<"\n\n1) rooms - 1200 BDT";
+   cout<< "\n\n2 Pasta - 250 BDT";
+   cout<< "\n\n3) burger - 150 BDT";
+   cout<< "\n\n4) noodles - 200 BDT";
+   cout<< "\n\n5) shake - 200 BDT";
+   cout<< "\n\n6) chicken-roll - 200 BDT";
    cout<< "\n\t\t\t Please select from the menu options ";
    cout<< "\n\n1) Rooms";
    cout<< "\n\n2 Pasta";
