@@ -70,4 +70,39 @@ void shopping::menu()
               }
     }  
     goto m;
-}        
+} 
+
+
+void shopping :: administrator()
+{ 
+    m:
+    int choice ;
+    cout << "\n\t\t\tAdmisntrator Menu ";
+    cout<<"\t\t\t\n1) Add product ";
+    cout<<"\t\t\t\n2) Modify product ";
+    cout<<"\t\t\t\n3) Delete product ";
+    cout<<"\t\t\t\n4) Back to main menu ";
+    
+    cout<<"\n\t\t\tPlease select: ";
+    cin>> choice;
+
+    switch (choice)
+    {
+        case 1:
+            add ();
+            break;
+        case 2 :
+            edit();
+            break;
+        case 3: 
+            rem();
+            break;
+        case 4:
+            menu();
+            break;
+        
+        default:
+            cout<< "\n Please select from the given options";
+    }
+    goto m;
+}
