@@ -106,3 +106,61 @@ void shopping :: administrator()
     }
     goto m;
 }
+
+void shopping :: buyer ()
+{ 
+    m:
+    int choice;
+    cout<<"\n\t\t\t Buyer Menu ";
+    cout<<"\t\t\t\n1) Buy product";
+    cout<<"\t\t\t\n2) Go back to main menu ";
+
+    cout<<"\n\t\t\t Please select : ";
+    cin>>choice;
+
+    switch (choice)
+    { 
+        case 1: 
+            receipt();
+            break;
+        
+        case 2: 
+             menu();
+             
+        default:
+        cout<<"/n Please select from the given options";
+
+    }
+    goto m;
+
+}
+
+void shopping :: add()
+{ 
+
+    m:
+    fstream data;
+    int c;
+    int token =0;
+    float p;
+    float d;
+    string n;
+
+    cout<< "\n\t\t\t Add new product ";
+
+    cout<< "\n\t Product code of the product : ";
+    cin>>pcode;
+    cout<< "\n\n\t Product name of the product : ";
+    cin>>pname;
+    cout<< "\n\n\t Price of the product : ";
+    cin>>price;
+    cout<< "\n\n\t Discount on product : ";
+    cin>>dis;
+
+
+    //file handling
+
+
+
+
+}
