@@ -158,9 +158,55 @@ void shopping :: add()
     cin>>dis;
 
 
-    //file handling
+
+  //file handling
+
+    data.open("database.text", ios::in);
+
+    if(!data)
+    {
+
+        data.open("database.text", ios::app|ios::out);
+        data<<" "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
+        data.close();
+    
+    }
+
+     else
+     { 
+
+        date>>c>>n>>p>>d;
+
+        while(!data.eof())
+        {
+            if(c==pcode)
+            {
+                token++;
+
+            }
+
+            data>>c>>n>>p>>d;
+        }
+        data.close();
+     }
 
 
+     if(token==1)
+     {
+        goto m;
+     }
+     else
+     {
+        data.open("database.text", ios::app|ios::out);
+        data<<" "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
+        data.close();
+     }
 
-
+     cout<< "\n\n\t Record inserted ";
+         
 }
+
+
+
+
+
