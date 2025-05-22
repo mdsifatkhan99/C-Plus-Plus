@@ -271,7 +271,7 @@ void shopping :: edit()
 
         if(token==0)
         {
-            cout<< "\n\n Sorry! Record not found ";
+            cout<< "\n\n Sorry! Record not found. ";
         }
 
     }
