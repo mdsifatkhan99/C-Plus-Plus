@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class shopping;
+class shopping
 {
     private:
         int pcode;
@@ -33,7 +33,7 @@ void shopping::menu()
     cout << "\t\t\t\t1. Administrator" << endl;
     cout << "\t\t\t\t2. Buyer" << endl;
     cout << "\t\t\t\t3. Exit" << endl;
-    cout << "\t\t\tPlease select: "; 
+    cout << "\t\t\tPlease select: ";
     cin >> choice;
 
     switch (choice)
@@ -59,22 +59,22 @@ void shopping::menu()
               {
                 buyer();
               }
-        case 3: 
+        case 3:
               {
                 exit(0);
               }
         default:
               {
                 cout<< "\n Please select from the given options";
-            
+
               }
-    }  
+    }
     goto m;
-} 
+}
 
 
-void shopping :: administrator()
-{ 
+void shopping :: adminstrator()
+{
     m:
     int choice ;
     cout << "\n\t\t\tAdmisntrator Menu ";
@@ -82,7 +82,7 @@ void shopping :: administrator()
     cout<<"\t\t\t\n2) Modify product ";
     cout<<"\t\t\t\n3) Delete product ";
     cout<<"\t\t\t\n4) Back to main menu ";
-    
+
     cout<<"\n\t\t\tPlease select: ";
     cin>> choice;
 
@@ -94,13 +94,13 @@ void shopping :: administrator()
         case 2 :
             edit();
             break;
-        case 3: 
+        case 3:
             rem();
             break;
         case 4:
             menu();
             break;
-        
+
         default:
             cout<< "\n Please select from the given options";
     }
@@ -108,7 +108,7 @@ void shopping :: administrator()
 }
 
 void shopping :: buyer ()
-{ 
+{
     m:
     int choice;
     cout<<"\n\t\t\t Buyer Menu ";
@@ -119,14 +119,14 @@ void shopping :: buyer ()
     cin>>choice;
 
     switch (choice)
-    { 
-        case 1: 
+    {
+        case 1:
             receipt();
             break;
-        
-        case 2: 
+
+        case 2:
              menu();
-             
+
         default:
         cout<<"/n Please select from the given options";
 
@@ -136,7 +136,7 @@ void shopping :: buyer ()
 }
 
 void shopping :: add()
-{ 
+{
 
     m:
     fstream data;
@@ -169,13 +169,13 @@ void shopping :: add()
         data.open("database.text", ios::app|ios::out);
         data<<" "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
         data.close();
-    
+
     }
 
      else
-     { 
+     {
 
-        date>>c>>n>>p>>d;
+        data>>c>>n>>p>>d;
 
         while(!data.eof())
         {
@@ -203,7 +203,7 @@ void shopping :: add()
      }
 
      cout<< "\n\n\t Record inserted ";
-         
+
 }
 
 
@@ -224,16 +224,16 @@ void shopping :: edit()
     data.open("database.text", ios::in);
 
     if(!data)
-    { 
+    {
         cout<< "\n\n File doesn't exist ";
 
     }
 
-    else 
+    else
     {
 
         data1.open("database1.tsxt", ios::app |ios::out);
-        data>>pcode>>pname>>price>>dis; 
+        data>>pcode>>pname>>price>>dis;
 
         while(!data.eof())
         {
@@ -254,7 +254,7 @@ void shopping :: edit()
                 token++;
             }
 
-            else 
+            else
             {
                 data1<< " "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
 
@@ -299,22 +299,22 @@ void shopping :: rem()
 
     }
 
-    else 
+    else
     {
         data1.open("database1.tct", ios::app |ios::out);
         data>>pcode>>pname>>price>>dis;
 
         while(!data.eof())
 
-        { 
+        {
 
             if (pcode==pkey)
-            { 
+            {
                 cout<<"\n\n\t product deleted successfully";
                 token++;
             }
 
-            else 
+            else
             {
                 data1<< " "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
             }
@@ -331,7 +331,7 @@ void shopping :: rem()
         if(token==0)
         {
             cout<< "\n\n\t Record not found ";
-        
+
         }
 
     }
@@ -340,7 +340,7 @@ void shopping :: rem()
 
 void shopping :: list()
 
-{ 
+{
 
     fstream data;
 
@@ -357,18 +357,98 @@ void shopping :: list()
     }
 
     data.close();
-    
+
 }
 
 void shopping :: receipt()
 {
 
+    fstream data;
 
-    
+
+    int arrc[100];
+    int arrq[100];
+    char choice;
+    int c=0;
+    float amount=0;
+    float dis=0;
+    float total=0;
+
+    cout<< "\n\n\t\t\t Receipt ";
+
+    data.open("database.txt", ios::in);
+
+    if(!data)
+
+    {
+        cout<< "\n\n Empty database";
+
+    }
+
+    else
+    {
+        data.close();
+
+        list();
+        cout<< "\n\n\t\t\t Please place the order ";
+
+        do
+        {
+            m:
+            cout<< "\n\n\t Enter product code : ";
+            cin>>arrc[c];
+            cout<< "\n\n\t Quantity in number : ";
+            cin>>arrq[c];
+
+            for(int i=0; i<c; i++)
+            {
+                if(arrc[c]==arrc[i])
+                    {
+                    cout<< "\n\n\t Product already added";
+                    goto m;
+                    }
+            }
+               c++;
+               cout<< "\n\n Do you want to buy another product? if yes press y else no ";
+               cin>>choice;
+
+        }
+
+        while (choice=='y');
+
+        cout<< "\n\n\t\t\t Receipt ";
+        cout<< "\n\n\t Product code\t\tProduct name\t\tQuantity\tPrice\tAmount\tAmount with discount"<<endl;
+
+        for(int i=0; i<c; i++)
+
+        {
+            data.open("database.txt", ios::in);
+            data>>pcode>>pname>>price>>dis;
+
+            while(!data.eof())
+            {
+                if(pcode==arrc[i])
+                {
+                    amount=price*arrq[i];
+                    dis=amount-(amount*dis/100);
+                    total=total+dis;
+                    cout<< "\n\n\t "<<pcode<<"\t\t\t"<<pname<<"\t\t\t"<<arrq[i]<<"\t\t"<<price<<"\t"<<amount<<"\t"<<dis;
+                }
+                data>>pcode>>pname>>price>>dis;
+            }
+        }
+
+        data.close();
+
+    }
+
+    cout<< "\n\n\t\t\t Total Amount : "<<total;
+
 }
 
-
-
-
-
-
+  int main()
+  {
+    shopping s;
+    s.menu();
+    return 0;
+  }
