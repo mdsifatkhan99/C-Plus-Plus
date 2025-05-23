@@ -279,6 +279,87 @@ void shopping :: edit()
 }
 
 
+void shopping :: rem()
+
+{
+    fstream data, data1;
+
+    int pkey;
+    int token=0;
+
+    cout<< "\n\n\t Delete product ";
+    cout<< "\n\n\t Product code : ";
+    cin>>pkey;
+
+    data.open("database.txt", ios::in);
+
+    if(!data)
+    {
+        cout<< "\n\n File doesn't exit";
+
+    }
+
+    else 
+    {
+        data1.open("database1.tct", ios::app |ios::out);
+        data>>pcode>>pname>>price>>dis;
+
+        while(!data.eof())
+
+        { 
+
+            if (pcode==pkey)
+            { 
+                cout<<"\n\n\t product deleted successfully";
+                token++;
+            }
+
+            else 
+            {
+                data1<< " "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
+            }
+
+            data>>pcode>>pname>>price>>dis;
+
+        }
+
+        data.close();
+        data1.close();
+        remove("database.txt");
+        rename("database1.txt", "database.txt");
+
+        if(token==0)
+        {
+            cout<< "\n\n\t Record not found ";
+        
+        }
+
+    }
+
+}
+
+void shopping :: list()
+
+{ 
+
+    fstream data;
+
+    data.open("database.txt", ios::in);
+
+    cout<< "\n\n\t\t Product code\t\tProduct name\t\tPrice\t\tDiscount"<<endl;
+
+    data>>pcode>>pname>>price>>dis;
+
+    while(!data.eof())
+    {
+        cout<< "\n\n\t\t "<<pcode<<"\t\t\t"<<pname<<"\t\t\t"<<price<<"\t\t"<<dis<<endl;
+        data>>pcode>>pname>>price>>dis;
+    }
+
+    data.close();
+    
+}
+
 
 
 
