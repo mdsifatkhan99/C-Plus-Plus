@@ -360,6 +360,13 @@ void shopping :: list()
     
 }
 
+void shopping :: receipt()
+{
+
+
+    
+}
+
 
 
 
