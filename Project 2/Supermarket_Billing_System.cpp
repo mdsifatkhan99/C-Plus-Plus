@@ -221,7 +221,7 @@ void shopping :: edit()
     cout<< "\n\t Product code : ";
     cin>>pkey;
 
-    data.open("database.text", ios::in);
+    data.open("database.txt", ios::in);
 
     if(!data)
     {
@@ -232,7 +232,7 @@ void shopping :: edit()
     else
     {
 
-        data1.open("database1.tsxt", ios::app |ios::out);
+        data1.open("database1.txt", ios::app |ios::out);
         data>>pcode>>pname>>price>>dis;
 
         while(!data.eof())
@@ -266,8 +266,8 @@ void shopping :: edit()
         data.close();
         data1.close();
 
-        remove("database.text");
-        rename("database1.txt", "database.text");
+        remove("database.txt");
+        rename("database1.txt", "database.txt");
 
         if(token==0)
         {
@@ -301,7 +301,7 @@ void shopping :: rem()
 
     else
     {
-        data1.open("database1.tct", ios::app |ios::out);
+        data1.open("database1.txt", ios::app |ios::out);
         data>>pcode>>pname>>price>>dis;
 
         while(!data.eof())
