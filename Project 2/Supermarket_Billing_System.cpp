@@ -161,12 +161,12 @@ void shopping :: add()
 
   //file handling
 
-    data.open("database.text", ios::in);
+    data.open("database.txt", ios::in);
 
     if(!data)
     {
 
-        data.open("database.text", ios::app|ios::out);
+        data.open("database.txt", ios::app|ios::out);
         data<<" "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
         data.close();
 
@@ -197,7 +197,7 @@ void shopping :: add()
      }
      else
      {
-        data.open("database.text", ios::app|ios::out);
+        data.open("database.txt", ios::app|ios::out);
         data<<" "<<pcode<<" "<<pname<<" "<<price<<" "<<dis<<endl;
         data.close();
      }
@@ -391,6 +391,8 @@ void shopping :: receipt()
 
         list();
         cout<< "\n\n\t\t\t Please place the order ";
+
+
 
         do
         {
