@@ -441,7 +441,6 @@ void shopping :: receipt()
         }
 
         data.close();
-
     }
 
     cout<< "\n\n\t\t\t Total Amount : "<<total;
