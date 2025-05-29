@@ -21,9 +21,10 @@ int main() {
     double rate = 1 + R / 100;
     Amount = P;
 
-    for (int i = 0; i < T; i++) {
+    for (int i = 0; i < T; i++)
+        {
         Amount *= rate;
-    }
+        }
 
     CI = Amount - P;
 
